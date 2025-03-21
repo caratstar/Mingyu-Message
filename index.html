@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+        }
+        body {
+            background: #f8f9fa;
+            margin: 0;
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 680px;
+            margin: 2rem auto;
+            padding: 3rem;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 1rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .poem-page {
+            opacity: 1;
+            transition: opacity 0.6s ease;
+            line-height: 1.8;
+            color: #34495e;
+            min-height: 380px;
+        }
+        .poem-page.hidden {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+        }
+        .nav-button {
+            display: inline-block;
+            margin: 2rem auto 0;
+            padding: 0.8rem 2rem;
+            background: var(--accent-color);
+            color: white !important;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+        .nav-button:hover {
+            transform: translateX(5px);
+        }
+        .signature {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px dashed #bdc3c7;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            .poem-page {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To MinGye</h1>
+
+        <!-- 第一首诗 -->
+        <div class="poem-page" id="page1">
+            <p>Great oaks endure through patient years,<br>
+            While saplings race then disappear.<br>
+            Let knowledge seep like morning dew,<br>
+            True wisdom forms where roots pursue.</p>
+
+            <p>In silent study's sacred space,<br>
+            Where pages turn with measured grace,<br>
+            Each equation, cold and stark,<br>
+            Becomes the ember in the dark.</p>
+
+            <p>Let others chase the fleeting flame,<br>
+            You'll build cathedrals from the frame.<br>
+            For every theorem you command,<br>
+            New worlds emerge at your command.</p>
+
+            <div style="text-align:center">
+                <a class="nav-button" onclick="switchPoem()">Continue Reading →</a>
+            </div>
+        </div>
+
+        <!-- 第二首诗 -->
+        <div class="poem-page hidden" id="page2">
+            <p>The scholar's path winds through the night,<br>
+            Where stars are proofs and moonlight - insight.<br>
+            Each failure etched upon the scroll,<br>
+            Becomes the bedrock of the soul.</p>
+
+            <p>Let seasons cycle, spring to fall,<br>
+            Your mind a forge transforming all.<br>
+            What seems like dormant winter's sleep,<br>
+            Is nature's way to harvest deep.</p>
+
+            <p>When dawn breaks through your study's veil,<br>
+            You'll find the cosmos in detail.<br>
+            For those who master time's slow art,<br>
+            Eternity dwells in the heart.</p>
+
+            <div style="text-align:center">
+                <a class="nav-button" onclick="switchPoem()">← Back to First</a>
+            </div>
+        </div>
+
+        <div class="signature">
+            From your Manito<br>
+            <small>Knowledge is the compass through time's ocean</small>
+        </div>
+    </div>
+
+    <script>
+        function switchPoem() {
+            const page1 = document.getElementById('page1');
+            const page2 = document.getElementById('page2');
+            
+            page1.classList.toggle('hidden');
+            page2.classList.toggle('hidden');
+            
+            // 自动滚动到顶部保持阅读连贯性
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
